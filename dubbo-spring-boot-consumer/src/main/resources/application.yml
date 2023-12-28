@@ -2,9 +2,9 @@ server:
   port: 8080
 dubbo:
   application:
-    name: dubbo-springboot-demo-consumer
+    name: ${APP_NAME:dubbo-springboot-demo-consumer}
     qos-enable: false
   protocol:
-    name: tri
+    name: ${PROTOCOL_NAME:tri}
   registry:
-    address: N/A
+    address: ${REG_ADDRESS:N/A}

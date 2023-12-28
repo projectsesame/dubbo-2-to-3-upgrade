@@ -13,11 +13,16 @@ Dubbo2 保持一致为hessian2。
 
 ## 1. 修改pom文件
 
-将dubbo版本从2.x变更为3.x
+将dubbo版本从2.x变更为3.x,并添加protobuf依赖(不加的话可能会出现classNotFoundErr)
 
 [pom.xml](pom.xml)
 
 ```xml
+<dependency>
+    <groupId>com.google.protobuf</groupId>
+    <artifactId>protobuf-java</artifactId>
+    <version>${protobuf-java.version}</version>
+</dependency>
 
 <dependencyManagement>
     <dependencies>

@@ -1,11 +1,9 @@
-server:
-  port: 8080
 dubbo:
   application:
-    name: dubbo-springboot-demo-provider
+    name:  ${APP_NAME:dubbo-springboot-demo-provider}
   protocol:
-    name: tri
-#    ext-protocol: dubbo,
-    port: 20880
+    name: ${PROTOCOL_NAME:tri}
+    ext-protocol: ${EXT-PROTOCOL_NAME:dubbo,}
+    port: ${PROTOCOL_PORT:20880}
   registry:
-    address: N/A
+    address: ${REG_ADDRESS:N/A}

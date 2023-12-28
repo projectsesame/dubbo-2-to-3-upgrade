@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DemoController {
-    @DubboReference(url = "tri://127.0.0.1:20880")
+    @DubboReference(url = "${PROVIDER_URL:dubbo://127.0.0.1:20880}")
     private DemoService demoService;
 
     @RequestMapping("/hello")
