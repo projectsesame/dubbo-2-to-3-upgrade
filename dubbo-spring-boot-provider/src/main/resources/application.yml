@@ -1,0 +1,11 @@
+server:
+  port: 8080
+dubbo:
+  application:
+    name: dubbo-springboot-demo-provider
+  protocol:
+    name: tri
+#    ext-protocol: dubbo,
+    port: 20880
+  registry:
+    address: N/A
