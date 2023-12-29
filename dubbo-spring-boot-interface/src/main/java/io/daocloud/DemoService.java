@@ -1,5 +1,7 @@
 package io.daocloud;
 
+import java.util.HashMap;
+
 public interface DemoService {
-    String sayHello(String name);
+    HashMap<String, String> sayHello(String name);
 }
