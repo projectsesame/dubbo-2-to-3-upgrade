@@ -1,15 +1,15 @@
 package io.daocloud.services;
 
 import io.daocloud.DemoService;
-import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
+import org.springframework.stereotype.Service;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
-@DubboService
+@Service("demoService")
 public class DemoServiceImpl implements DemoService {
     @Override
     public HashMap<String, String> sayHello(String name) {

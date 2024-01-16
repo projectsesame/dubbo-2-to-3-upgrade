@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://dubbo.apache.org/schema/dubbo
+    http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="dubbo-springboot-demo-consumer"  />
+    <dubbo:protocol name="tri"/>
+<!--    <dubbo:registry address="127.0.0.1" port="2181" protocol="zookeeper"/>-->
+    <!--配置消费者引用的接口 -->
+    <dubbo:reference interface="io.daocloud.DemoService" id="demoService" provided-by="dubbo-springboot-demo-provider" provider-namespace="dubbo-demo" provider-port="20880"/>
+</beans>

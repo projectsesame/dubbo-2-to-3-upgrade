@@ -3,6 +3,7 @@ package io.daocloud.controller;
 import io.daocloud.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.RpcContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +17,11 @@ import java.util.Map;
 
 @RestController
 public class DemoController {
-    @DubboReference(url = "${PROVIDER_URL:dubbo://127.0.0.1:20880}")
-    private DemoService demoService;
+    private final DemoService demoService;
+
+    public DemoController(DemoService demoService) {
+        this.demoService = demoService;
+    }
 
     @RequestMapping("/hello")
     public HashMap<String, Object> sayHello(@RequestHeader MultiValueMap<String, String> headers, String name) {
