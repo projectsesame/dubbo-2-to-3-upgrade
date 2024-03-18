@@ -42,7 +42,7 @@ dubbo:
 
 通过makefile进行打包并推送
 
-使用[build](build)文件下的yaml进行部署
+使用[k8s-build](k8s-build)文件下的yaml进行部署
 
 ***注:k8s中的provider service name 与项目中的 dubbo 应用名是一样的***
 
