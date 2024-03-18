@@ -3,8 +3,8 @@ clean:
 package:
 	mvn package -DskipTests
 
-HUB ?= release-ci.daocloud.io/mspider
-VERSION ?= v0.2
+HUB ?= release-ci.daocloud.io/dmp
+VERSION ?= v1.0.0
 PLATFORM ?= linux/amd64 # linux/amd64,linux/arm64
 
 consumer-docker: package

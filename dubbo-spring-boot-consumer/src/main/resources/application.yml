@@ -3,8 +3,7 @@ server:
 dubbo:
   application:
     name: ${APP_NAME:dubbo-springboot-demo-consumer}
-    qos-enable: false
-  protocol:
-    name: ${PROTOCOL_NAME:tri}
+    qos-enable: true
+    qos-accept-foreign-ip: true
   registry:
-    address: ${REG_ADDRESS:N/A}
+    address: ${REG_ADDRESS:kubernetes://10.6.176.50:6443?registry-type=service&duplicate=false&namespace=dubbo-demo}
