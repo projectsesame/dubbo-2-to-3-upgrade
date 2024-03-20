@@ -3,7 +3,7 @@ dubbo:
     name:  ${APP_NAME:dubbo-springboot-demo-provider}
   protocol:
     name: ${PROTOCOL_NAME:tri}
-    ext-protocol: ${EXT-PROTOCOL_NAME:dubbo,}
+#    ext-protocol: ${EXT-PROTOCOL_NAME:dubbo,}
     port: ${PROTOCOL_PORT:20880}
   registry:
     address: ${REG_ADDRESS:N/A}

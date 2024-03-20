@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 public class DemoController {
-    @DubboReference(url = "${PROVIDER_URL:dubbo://127.0.0.1:20880}")
+    @DubboReference(providedBy = "dubbo-springboot-demo-provider", providerPort = 20880, providerNamespace = "dubbo-demo")
     private DemoService demoService;
 
     @RequestMapping("/hello")
@@ -26,7 +26,7 @@ public class DemoController {
             laneName = "lane";
         }
         String v = headers.getFirst(laneName);
-        if (v!=null) {
+        if (v != null) {
             RpcContext.getClientAttachment().setAttachment(laneName, v);
         }
         HashMap<String, String> res = demoService.sayHello(name);
@@ -34,11 +34,12 @@ public class DemoController {
         hm.put("provider", res);
         try {
             hm.put("hostname", InetAddress.getLocalHost().getHostName());
-        } catch (UnknownHostException ignored) {}
+        } catch (UnknownHostException ignored) {
+        }
         for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
-            hm.put("headers."+key, value.toString());
+            hm.put("headers." + key, value.toString());
         }
         return hm;
     }

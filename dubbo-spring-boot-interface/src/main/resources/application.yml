@@ -1,7 +1,5 @@
 dubbo:
   application:
     name: dubbo-springboot-demo-provider
-  protocol:
-    name: dubbo
   registry:
     address: N/A

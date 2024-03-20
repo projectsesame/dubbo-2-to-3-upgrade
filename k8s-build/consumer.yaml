@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dubbo-springboot-demo-consumer
+  namespace: dubbo-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dubbo-springboot-demo-consumer
+  template:
+    metadata:
+      labels:
+        app: dubbo-springboot-demo-consumer
+    spec:
+      containers:
+        - name: server
+          image: release-ci.daocloud.io/dmp/spring-dubbo3-consumer:v1.0.0
+          imagePullPolicy: Always
+          ports:
+            - name: http-port
+              containerPort: 8080
+              protocol: TCP
+            - name: dubbo-port
+              containerPort: 20880
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: 22222
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 22222
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: 22222
+            failureThreshold: 30
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dubbo-springboot-demo-consumer
+  namespace: dubbo-demo
+spec:
+  selector:
+    app: dubbo-springboot-demo-consumer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

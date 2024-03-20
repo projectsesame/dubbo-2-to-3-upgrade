@@ -20,11 +20,12 @@ public class DemoServiceImpl implements DemoService {
             String key = entry.getKey();
             Object value = entry.getValue();
             // 处理每个附件的键值对
-            res.put("headers."+key, value.toString());
+            res.put("headers." + key, value.toString());
         }
         try {
             res.put("hostname", InetAddress.getLocalHost().getHostName());
-        } catch (UnknownHostException ignored) {}
+        } catch (UnknownHostException ignored) {
+        }
         return res;
     }
 }

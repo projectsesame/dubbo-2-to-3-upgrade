@@ -1,10 +1,12 @@
 server:
   port: 8080
 dubbo:
+  protocol:
+    name: tri
   application:
     name: ${APP_NAME:dubbo-springboot-demo-consumer}
     qos-enable: false
-  protocol:
-    name: ${PROTOCOL_NAME:tri}
   registry:
     address: ${REG_ADDRESS:N/A}
+  consumer:
+    mesh-enable: true
